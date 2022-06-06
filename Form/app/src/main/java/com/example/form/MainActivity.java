@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 check = CheckAll();
                 if (check) {
-                    Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
                 }
             }
         });
