@@ -29,11 +29,12 @@ import com.example.project1.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
 
-    Button button;
+    Button button,update;
     EditText currencyToBeConverted;
     TextView currencyConverted;
     Spinner convertToDropdown;
     Spinner convertFromDropdown;
+    JsonObject res, rates;
 
     private FragmentSlideshowBinding binding;
 
@@ -49,6 +50,7 @@ public class SlideshowFragment extends Fragment {
         convertToDropdown = (Spinner) view.findViewById(R.id.convert_to);
         convertFromDropdown = (Spinner) view.findViewById(R.id.convert_from);
         button = (Button) view.findViewById(R.id.button);
+        update = (Button) view.findViewById(R.id.update);
 
         //Adding Functionality
         String[] dropDownList = {"USD", "INR","EUR","NZD"};
@@ -57,18 +59,18 @@ public class SlideshowFragment extends Fragment {
         convertToDropdown.setAdapter(adapter);
         convertFromDropdown.setAdapter(adapter);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RetrofitInterface.retrofitInterface.getExchangeCurrency(convertFromDropdown.getSelectedItem().toString()).enqueue(new Callback<JsonObject>() {
+                RetrofitInterface.retrofitInterface.getExchangeCurrency("USD").enqueue(new Callback<JsonObject>() {
                     @Override
                     public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                        JsonObject res = response.body();
-                        JsonObject rates = res.getAsJsonObject("conversion_rates");
-                        double currency = Double.valueOf(currencyToBeConverted.getText().toString());
-                        double multiplier = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
-                        double result = currency * multiplier;
-                        currencyConverted.setText(String.valueOf(result));
+                        res = response.body();
+                        rates = res.getAsJsonObject("conversion_rates");
+                        //double currency = Double.valueOf(currencyToBeConverted.getText().toString());
+                        //double multiplier = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
+                        //double result = currency * multiplier;
+                        currencyConverted.setText("OK");
 
                     }
 
@@ -82,6 +84,18 @@ public class SlideshowFragment extends Fragment {
 
                     }
                 });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double amount = Double.valueOf(currencyToBeConverted.getText().toString());
+                double rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
+                double rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
+                double rate = rate1/rate2;
+                double result = rate * amount;
+                currencyConverted.setText(String.valueOf(result));
+            }
+        });
 
 
 

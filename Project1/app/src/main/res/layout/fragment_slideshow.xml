@@ -81,6 +81,21 @@
 
     </LinearLayout>
     <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/custom_button"
+        android:text="Update"
+        android:textSize="10sp"
+        />
+    <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,6 +110,7 @@
         android:text="Convert"
         android:textSize="10sp"
         />
+
 
     <TextView
         android:id="@+id/currency_converted"
