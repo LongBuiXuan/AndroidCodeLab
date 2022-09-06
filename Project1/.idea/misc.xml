@@ -12,13 +12,16 @@
         <entry key="..\:/Work/Android/Project1/app/src/main/res/drawable/simple_spinner.xml" value="0.125" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/activity_main.xml" value="0.25679347826086957" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/app_bar_main.xml" value="0.25679347826086957" />
-        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/button.xml" value="0.38333333333333336" />
+        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/button.xml" value="0.22" />
+        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/button_pro.xml" value="0.2522179974651457" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/content_main.xml" value="0.25679347826086957" />
-        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/fragment_gallery.xml" value="0.18642350557244175" />
+        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/fragment_gallery.xml" value="0.33" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/fragment_home.xml" value="0.25679347826086957" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/fragment_slideshow.xml" value="0.25679347826086957" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/input_layout.xml" value="0.38333333333333336" />
+        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/input_layout_pro.xml" value="0.2916666666666667" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/nav_header_main.xml" value="0.25679347826086957" />
+        <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/pro_view.xml" value="0.5327102803738317" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/layout/simple_spinner.xml" value="0.3875" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/menu/activity_main_drawer.xml" value="0.38333333333333336" />
         <entry key="..\:/Work/Android/Project1/app/src/main/res/menu/main.xml" value="0.38333333333333336" />

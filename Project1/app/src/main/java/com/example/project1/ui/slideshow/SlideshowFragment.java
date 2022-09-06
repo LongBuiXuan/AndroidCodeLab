@@ -53,7 +53,7 @@ public class SlideshowFragment extends Fragment {
         update = (Button) view.findViewById(R.id.update);
 
         //Adding Functionality
-        String[] dropDownList = {"USD", "INR","EUR","NZD"};
+        String[] dropDownList = {"USD","INR","EUR","NZD","VND","CNY","JPY"};
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, dropDownList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         convertToDropdown.setAdapter(adapter);
