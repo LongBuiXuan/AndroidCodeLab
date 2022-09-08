@@ -17,11 +17,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
-        android:layout_marginStart="135dp"
+        android:layout_marginStart="127dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="33dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="316dp"
+        android:layout_marginBottom="311dp"
         android:hint="Not updated yet"
         android:textSize="25dp" />
 
@@ -34,11 +34,11 @@
 
         android:layout_alignParentBottom="true"
 
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="21dp"
         android:layout_marginLeft="162dp"
-        android:layout_marginEnd="319dp"
+        android:layout_marginEnd="302dp"
         android:layout_marginRight="162dp"
-        android:layout_marginBottom="309dp"
+        android:layout_marginBottom="308dp"
         android:background="@drawable/custom_button"
         android:text="Update"
         android:textColor="@android:color/white"
@@ -51,7 +51,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="433dp"
@@ -67,10 +67,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginStart="267dp"
+        android:layout_marginStart="282dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="436dp" />
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="437dp" />
 
     <Spinner
         android:id="@+id/convert_from"
@@ -81,9 +81,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginStart="270dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="496dp" />
+        android:layout_marginStart="283dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="494dp" />
 
     <EditText
         android:id="@+id/currency_to_be_converted"
@@ -93,11 +93,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginStart="-2dp"
+        android:layout_marginStart="14dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginEnd="162dp"
+        android:layout_marginEnd="146dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="495dp"
+        android:layout_marginBottom="494dp"
         android:inputType="number" />
 
     <Button
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="313dp"
+        android:layout_marginTop="180dp"
         android:text="Swap" />
 
 </RelativeLayout>

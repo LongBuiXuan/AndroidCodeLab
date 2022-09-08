@@ -39,6 +39,7 @@ public class SlideshowFragment extends Fragment {
     Spinner convertToDropdown;
     Spinner convertFromDropdown;
     JsonObject res, rates;
+    double amount, rate1, rate2, rate;
 
     private FragmentSlideshowBinding binding;
 
@@ -95,20 +96,22 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                double amount = Double.valueOf(currencyToBeConverted.getText().toString());
-                double rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
-                double rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
-                double rate = rate1/rate2;
+                amount = Double.valueOf(currencyToBeConverted.getText().toString());
+                rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
+                rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
+                rate = rate1/rate2;
                 double result = rate * amount;
                 currencyConverted.setText(String.valueOf(result));
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
 
             }
         });
@@ -120,6 +123,13 @@ public class SlideshowFragment extends Fragment {
 
                 convertToDropdown.setSelection(convertFromDropdown.getSelectedItemPosition());
                 convertFromDropdown.setSelection(spinner1Index );
+                amount = Double.valueOf(currencyToBeConverted.getText().toString());
+                rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
+                rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
+                rate = rate1/rate2;
+                double result = rate * amount;
+                currencyConverted.setText(String.valueOf(result));
+
             }
         });
 
