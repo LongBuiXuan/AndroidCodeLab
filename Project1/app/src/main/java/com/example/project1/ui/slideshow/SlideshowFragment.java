@@ -1,6 +1,8 @@
 package com.example.project1.ui.slideshow;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -29,9 +33,9 @@ import com.example.project1.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
 
-    Button button,update;
+    Button swap,update;
     EditText currencyToBeConverted;
-    TextView currencyConverted;
+    TextView currencyConverted,updatestatus;
     Spinner convertToDropdown;
     Spinner convertFromDropdown;
     JsonObject res, rates;
@@ -49,8 +53,9 @@ public class SlideshowFragment extends Fragment {
         currencyToBeConverted = (EditText) view.findViewById(R.id.currency_to_be_converted);
         convertToDropdown = (Spinner) view.findViewById(R.id.convert_to);
         convertFromDropdown = (Spinner) view.findViewById(R.id.convert_from);
-        button = (Button) view.findViewById(R.id.button);
+        swap = (Button) view.findViewById(R.id.btswap);
         update = (Button) view.findViewById(R.id.update);
+        updatestatus =(TextView) view.findViewById(R.id.update_status);
 
         //Adding Functionality
         String[] dropDownList = {"USD","INR","EUR","NZD","VND","CNY","JPY"};
@@ -70,7 +75,8 @@ public class SlideshowFragment extends Fragment {
                         //double currency = Double.valueOf(currencyToBeConverted.getText().toString());
                         //double multiplier = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
                         //double result = currency * multiplier;
-                        currencyConverted.setText("OK");
+
+                        updatestatus.setText("OK");
 
                     }
 
@@ -85,9 +91,14 @@ public class SlideshowFragment extends Fragment {
                     }
                 });
 
-        button.setOnClickListener(new View.OnClickListener() {
+        currencyToBeConverted.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 double amount = Double.valueOf(currencyToBeConverted.getText().toString());
                 double rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
                 double rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
@@ -95,7 +106,24 @@ public class SlideshowFragment extends Fragment {
                 double result = rate * amount;
                 currencyConverted.setText(String.valueOf(result));
             }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
         });
+
+        swap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int spinner1Index = convertToDropdown.getSelectedItemPosition();
+
+                convertToDropdown.setSelection(convertFromDropdown.getSelectedItemPosition());
+                convertFromDropdown.setSelection(spinner1Index );
+            }
+        });
+
+
 
 
 

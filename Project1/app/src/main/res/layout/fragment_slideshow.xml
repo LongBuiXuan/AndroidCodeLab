@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -8,120 +8,105 @@
     tools:context=".ui.slideshow.SlideshowFragment">
 
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/update_status"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Amount to be convert"
-            android:textSize="15dp"
-            android:layout_margin="20dp"
-            />
-        <EditText
-            android:id="@+id/currency_to_be_converted"
-            android:inputType="number"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="From"
-            android:textSize="15dp"
-            android:layout_margin="20dp"
-            />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_spinner"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
-            <Spinner
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:id="@+id/convert_from"
-                android:layout_gravity="center"
+        android:layout_marginStart="135dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="316dp"
+        android:hint="Not updated yet"
+        android:textSize="25dp" />
 
-                />
-        </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="To"
-            android:textSize="15dp"
-            android:layout_margin="20dp"
-            />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_spinner"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
-            <Spinner
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:id="@+id/convert_to"
-                android:layout_gravity="center"
-
-                />
-        </RelativeLayout>
-
-    </LinearLayout>
     <Button
         android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginStart="4dp"
         android:layout_marginLeft="162dp"
-
-        android:layout_marginEnd="162dp"
+        android:layout_marginEnd="319dp"
         android:layout_marginRight="162dp"
-
-        android:textColor="@android:color/white"
+        android:layout_marginBottom="309dp"
         android:background="@drawable/custom_button"
         android:text="Update"
-        android:textSize="10sp"
-        />
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginLeft="162dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:layout_marginBottom="30dp"
         android:textColor="@android:color/white"
-        android:background="@drawable/custom_button"
-        android:text="Convert"
-        android:textSize="10sp"
-        />
-
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/currency_converted"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:textSize="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="2dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="433dp"
         android:hint="Result"
-        />
+        android:textSize="25dp" />
 
-</LinearLayout>
+    <Spinner
+        android:id="@+id/convert_to"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="267dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="436dp" />
+
+    <Spinner
+        android:id="@+id/convert_from"
+        android:layout_width="113dp"
+        android:layout_height="37dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="270dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="496dp" />
+
+    <EditText
+        android:id="@+id/currency_to_be_converted"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="-2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="495dp"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btswap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="313dp"
+        android:text="Swap" />
+
+</RelativeLayout>
