@@ -39,7 +39,7 @@ public class SlideshowFragment extends Fragment {
     Spinner convertToDropdown;
     Spinner convertFromDropdown;
     JsonObject res, rates;
-    double amount, rate1, rate2, rate;
+    double amount, rate1, rate2, rate, result;
 
     private FragmentSlideshowBinding binding;
 
@@ -101,12 +101,20 @@ public class SlideshowFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                amount = Double.valueOf(currencyToBeConverted.getText().toString());
-                rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
-                rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
-                rate = rate1/rate2;
-                double result = rate * amount;
-                currencyConverted.setText(String.valueOf(result));
+                if ((!currencyToBeConverted.equals("")) && (!rates.equals("")) ) {
+                    amount = Double.valueOf(currencyToBeConverted.getText().toString()+"");
+                    rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString()+"");
+                    rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString()+"");
+                    if (amount != 0) {
+                        rate = rate1 / rate2;
+                        result = rate * amount;
+                    }
+                    currencyConverted.setText(String.valueOf(result));
+                }
+                if (currencyToBeConverted.equals("")) {
+                    result = 0;
+                    currencyConverted.setText(String.valueOf(result));
+                }
             }
 
             @Override
@@ -123,12 +131,7 @@ public class SlideshowFragment extends Fragment {
 
                 convertToDropdown.setSelection(convertFromDropdown.getSelectedItemPosition());
                 convertFromDropdown.setSelection(spinner1Index );
-                amount = Double.valueOf(currencyToBeConverted.getText().toString());
-                rate1 = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
-                rate2 = Double.valueOf(rates.get(convertFromDropdown.getSelectedItem().toString()).toString());
-                rate = rate1/rate2;
-                double result = rate * amount;
-                currencyConverted.setText(String.valueOf(result));
+
 
             }
         });

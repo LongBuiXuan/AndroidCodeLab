@@ -1,6 +1,8 @@
 package com.example.project1.ui.gallery;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +15,21 @@ import androidx.fragment.app.Fragment;
 import com.example.project1.R;
 import com.example.project1.databinding.FragmentGalleryBinding;
 
+import java.math.BigInteger;
+
 public class GalleryFragment extends Fragment {
 
-    Button bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bta,btb,btc,btd,bte,btf;
-    Button bang,cong,tru,nhan,chia,c,ce,cham;
+    Button bt0,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bta,btb,btc,btd,bte,btf,btdeci,bthexa,btocta,btbin;
+    Button bang,cong,tru,nhan,chia,c,ce,cham, abs;
     TextView manchinh, manphu, manhexa, manocta, mandec, manbin;
     String tinhtoan;
     String pheptoan;
+    Integer mode,k;
+    String hex1, dec1, octa1, bin1;
     Boolean checkdot=false, checkBang=false;
-    Integer n1,n2, res;
+    String n1,n2, res, change;
+    BigInteger value;
+
 
 
 
@@ -30,6 +38,8 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+
+
         manchinh = view.findViewById(R.id.man_hinh0);
         manphu = view.findViewById(R.id.man_hinh_phu1);
         bt0 = view.findViewById(R.id.button0);
@@ -42,18 +52,41 @@ public class GalleryFragment extends Fragment {
         bt7 = view.findViewById(R.id.button7);
         bt8 = view.findViewById(R.id.button8);
         bt9 = view.findViewById(R.id.button9);
+        bta = view.findViewById(R.id.buttonA);
+        btb = view.findViewById(R.id.buttonB);
+        btc = view.findViewById(R.id.buttonC);
+        btd = view.findViewById(R.id.buttonD);
+        bte = view.findViewById(R.id.buttonE);
+        btf = view.findViewById(R.id.buttonF);
         cham = view.findViewById(R.id.buttoncham);
         bang = view.findViewById(R.id.buttonbang);
         cong = view.findViewById(R.id.buttoncong);
         tru = view.findViewById(R.id.buttontru);
         nhan = view.findViewById(R.id.buttonnhan);
         chia = view.findViewById(R.id.buttonchia);
+        abs = view.findViewById(R.id.buttonabs);
         c = view.findViewById(R.id.buttonclear);
         ce = view.findViewById(R.id.buttonCE);
         manbin = view.findViewById(R.id.bin);
         manhexa = view.findViewById(R.id.hexa);
         mandec = view.findViewById(R.id.deci);
         manocta = view.findViewById(R.id.octa);
+        bthexa = view.findViewById(R.id.buttonhexa);
+        btocta = view.findViewById(R.id.buttonocta);
+        btbin = view.findViewById(R.id.buttonbin);
+        btdeci = view.findViewById(R.id.buttondeci);
+
+
+
+        abs.setEnabled(false);
+        cham.setEnabled(false);
+        bta.setEnabled(false);
+        btb.setEnabled(false);
+        btc.setEnabled(false);
+        btd.setEnabled(false);
+        bte.setEnabled(false);
+        btf.setEnabled(false);
+
 
         c.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +194,61 @@ public class GalleryFragment extends Fragment {
                 }
             }
         });
+        bta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang) {
+                    tinhtoan = manchinh.getText().toString();
+                    manchinh.setText(tinhtoan + "a");
+                }
+            }
+        });
+        btb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang) {
+                    tinhtoan = manchinh.getText().toString();
+                    manchinh.setText(tinhtoan + "b");
+                }
+            }
+        });
+        btc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang) {
+                    tinhtoan = manchinh.getText().toString();
+                    manchinh.setText(tinhtoan + "c");
+                }
+            }
+        });
+        btd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang) {
+                    tinhtoan = manchinh.getText().toString();
+                    manchinh.setText(tinhtoan + "d");
+                }
+            }
+        });
+        bte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang) {
+                    tinhtoan = manchinh.getText().toString();
+                    manchinh.setText(tinhtoan + "e");
+                }
+            }
+        });
+        btf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang) {
+                    tinhtoan = manchinh.getText().toString();
+                    manchinh.setText(tinhtoan + "f");
+                }
+            }
+        });
+
         //cham.setOnClickListener(new View.OnClickListener() {
            // @Override
             //public void onClick(View view) {
@@ -174,16 +262,183 @@ public class GalleryFragment extends Fragment {
                 //}
             //}
         //});
+
+
+
+
+
+
+        ce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!checkBang){
+                    String val = manchinh.getText().toString();
+                    if (!val.isEmpty()){
+                        val = val.substring(0, val.length() - 1);
+                        manchinh.setText(val);
+                    }
+                }
+            }
+        });
+
+        TextWatcher DeciText = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tinhtoan = manchinh.getText().toString();
+                if (!tinhtoan.equals("")) {
+                    k = Integer.parseInt(manchinh.getText() + "");
+                }
+                manbin.setText(Integer.toBinaryString(k));
+                mandec.setText(k + "");
+                manhexa.setText(Integer.toHexString(k));
+                manocta.setText(Integer.toOctalString(k));
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+
+        TextWatcher HexaText = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tinhtoan = manchinh.getText().toString();
+                if (!tinhtoan.equals("")) {
+
+                }
+                manbin.setText("1");
+                mandec.setText("2");
+                manhexa.setText("3");
+                manocta.setText("4");
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+
+
+        bthexa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                manchinh.removeTextChangedListener(DeciText);
+                manchinh.addTextChangedListener(HexaText);
+                bta.setEnabled(true);
+                btb.setEnabled(true);
+                btc.setEnabled(true);
+                btd.setEnabled(true);
+                bte.setEnabled(true);
+                btf.setEnabled(true);
+                bt9.setEnabled(true);
+                bt8.setEnabled(true);
+                bt7.setEnabled(true);
+                bt6.setEnabled(true);
+                bt5.setEnabled(true);
+                bt4.setEnabled(true);
+                bt3.setEnabled(true);
+                bt2.setEnabled(true);
+
+            }
+        });
+
+        btdeci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                manchinh.removeTextChangedListener(HexaText);
+                manchinh.addTextChangedListener(DeciText);
+                bta.setEnabled(false);
+                btb.setEnabled(false);
+                btc.setEnabled(false);
+                btd.setEnabled(false);
+                bte.setEnabled(false);
+                btf.setEnabled(false);
+                bt9.setEnabled(true);
+                bt8.setEnabled(true);
+                bt7.setEnabled(true);
+                bt6.setEnabled(true);
+                bt5.setEnabled(true);
+                bt4.setEnabled(true);
+                bt3.setEnabled(true);
+                bt2.setEnabled(true);
+
+            }
+        });
+
+        btocta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                bta.setEnabled(false);
+                btb.setEnabled(false);
+                btc.setEnabled(false);
+                btd.setEnabled(false);
+                bte.setEnabled(false);
+                btf.setEnabled(false);
+                bt9.setEnabled(false);
+                bt8.setEnabled(false);
+                bt7.setEnabled(true);
+                bt6.setEnabled(true);
+                bt5.setEnabled(true);
+                bt4.setEnabled(true);
+                bt3.setEnabled(true);
+                bt2.setEnabled(true);
+
+            }
+        });
+
+        btbin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                bta.setEnabled(false);
+                btb.setEnabled(false);
+                btc.setEnabled(false);
+                btd.setEnabled(false);
+                bte.setEnabled(false);
+                btf.setEnabled(false);
+                bt9.setEnabled(false);
+                bt8.setEnabled(false);
+                bt7.setEnabled(false);
+                bt6.setEnabled(false);
+                bt5.setEnabled(false);
+                bt4.setEnabled(false);
+                bt3.setEnabled(false);
+                bt2.setEnabled(false);
+
+            }
+        });
+
+
+
         cong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (manchinh.getText() == "") {
-                    n1 = 0;
+                    n1="";
                     manphu.setText("0 + ");
 
                 }
                 else {
-                    n1 = Integer.parseInt( manchinh.getText()+"");
+                    n1 = manchinh.getText().toString();
                     manphu.setText(manchinh.getText().toString() + " + ");
                 }
                 manchinh.setText("");
@@ -198,12 +453,12 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (manchinh.getText() == "") {
-                    n1 = 0;
+                    n1="";
                     manphu.setText("0 + ");
 
                 }
                 else {
-                    n1 = Integer.parseInt(manchinh.getText() + "");
+                    n1 = manchinh.getText().toString();
                     manphu.setText(manchinh.getText().toString() + " - ");
                 }
                 manchinh.setText("");
@@ -218,12 +473,12 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (manchinh.getText() == "") {
-                    n1 = 0;
+                    n1 = "";
                     manphu.setText("0 + ");
 
                 }
                 else {
-                    n1 = Integer.parseInt( manchinh.getText()+"");
+                    n1 = manchinh.getText().toString();
                     manphu.setText(manchinh.getText().toString() + " x ");
                 }
                 manchinh.setText("");
@@ -238,12 +493,12 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (manchinh.getText() == "") {
-                    n1 = 0;
+                    n1="";
                     manphu.setText("0 + ");
 
                 }
                 else {
-                    n1 = Integer.parseInt( manchinh.getText()+"");
+                    n1 = manchinh.getText().toString();
                     manphu.setText(manchinh.getText().toString() + " / ");
                 }
                 manchinh.setText("");
@@ -254,44 +509,13 @@ public class GalleryFragment extends Fragment {
 
             }
         });
-        bang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!checkBang){
-                    checkdot = false;
-                    tinhtoan = manchinh.getText().toString();
-                    n2 = Integer.parseInt(manchinh.getText() + "");
-                    manphu.setText(manphu.getText().toString() + manchinh.getText().toString() + "");
-                    manchinh.setText("");
-                    if (pheptoan == "+")
-                        res = n1 + n2;
-                    else if (pheptoan == "-")
-                        res = n1 - n2;
-                    else if (pheptoan == "x")
-                        res = n1 * n2;
-                    else if (pheptoan == "/")
-                        res = n1 / n2;
-                    checkBang = true;
-                    manchinh.setText(res + "");
-                    manbin.setText(Integer.toBinaryString(res));
-                    mandec.setText(res + "");
-                    manhexa.setText(Integer.toHexString(res));
-                    manocta.setText(Integer.toOctalString(res));
-                }
-            }
-        });
-        ce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!checkBang){
-                    String val = manchinh.getText().toString();
-                    if (!val.isEmpty()){
-                        val = val.substring(0, val.length() - 1);
-                        manchinh.setText(val);
-                    }
-                }
-            }
-        });
+
+
+
+
+
+
+
 
         return view;
     }
