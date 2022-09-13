@@ -316,12 +316,60 @@ public class GalleryFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 tinhtoan = manchinh.getText().toString();
                 if (!tinhtoan.equals("")) {
-
+                    k = Integer.parseInt(manchinh.getText() + "", 16);
                 }
-                manbin.setText("1");
-                mandec.setText("2");
-                manhexa.setText("3");
-                manocta.setText("4");
+                manbin.setText(Integer.toBinaryString(k));
+                mandec.setText(k + "");
+                manhexa.setText(Integer.toHexString(k));
+                manocta.setText(Integer.toOctalString(k));
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        TextWatcher OctaText = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tinhtoan = manchinh.getText().toString();
+                if (!tinhtoan.equals("")) {
+                    k = Integer.parseInt(manchinh.getText() + "", 8);
+                }
+                manbin.setText(Integer.toBinaryString(k));
+                mandec.setText(k + "");
+                manhexa.setText(Integer.toHexString(k));
+                manocta.setText(Integer.toOctalString(k));
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        TextWatcher BinText = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                tinhtoan = manchinh.getText().toString();
+                if (!tinhtoan.equals("")) {
+                    k = Integer.parseInt(manchinh.getText() + "", 2);
+                }
+                manbin.setText(Integer.toBinaryString(k));
+                mandec.setText(k + "");
+                manhexa.setText(Integer.toHexString(k));
+                manocta.setText(Integer.toOctalString(k));
 
             }
 
@@ -337,6 +385,8 @@ public class GalleryFragment extends Fragment {
             public void onClick(View view) {
 
                 manchinh.removeTextChangedListener(DeciText);
+                manchinh.removeTextChangedListener(OctaText);
+                manchinh.removeTextChangedListener(BinText);
                 manchinh.addTextChangedListener(HexaText);
                 bta.setEnabled(true);
                 btb.setEnabled(true);
@@ -361,6 +411,8 @@ public class GalleryFragment extends Fragment {
             public void onClick(View view) {
 
                 manchinh.removeTextChangedListener(HexaText);
+                manchinh.removeTextChangedListener(OctaText);
+                manchinh.removeTextChangedListener(BinText);
                 manchinh.addTextChangedListener(DeciText);
                 bta.setEnabled(false);
                 btb.setEnabled(false);
@@ -384,7 +436,10 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
+                manchinh.removeTextChangedListener(DeciText);
+                manchinh.removeTextChangedListener(HexaText);
+                manchinh.removeTextChangedListener(BinText);
+                manchinh.addTextChangedListener(OctaText);
 
                 bta.setEnabled(false);
                 btb.setEnabled(false);
@@ -408,6 +463,10 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                manchinh.removeTextChangedListener(DeciText);
+                manchinh.removeTextChangedListener(HexaText);
+                manchinh.removeTextChangedListener(OctaText);
+                manchinh.addTextChangedListener(BinText);
 
                 bta.setEnabled(false);
                 btb.setEnabled(false);
