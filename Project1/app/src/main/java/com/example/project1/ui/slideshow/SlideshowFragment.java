@@ -30,6 +30,8 @@ import retrofit2.Response;
 import com.example.project1.R;
 import com.example.project1.databinding.FragmentSlideshowBinding;
 
+import java.text.DecimalFormat;
+
 
 public class SlideshowFragment extends Fragment {
 
@@ -42,6 +44,9 @@ public class SlideshowFragment extends Fragment {
     double amount, rate1, rate2, rate, result;
 
     private FragmentSlideshowBinding binding;
+
+    DecimalFormat df = new DecimalFormat("#.##");
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -108,8 +113,9 @@ public class SlideshowFragment extends Fragment {
                     if (amount != 0) {
                         rate = rate1 / rate2;
                         result = rate * amount;
+
                     }
-                    currencyConverted.setText(String.valueOf(result));
+                    currencyConverted.setText(df.format(result));
                 }
                 if (currencyToBeConverted.equals("")) {
                     result = 0;
@@ -148,5 +154,6 @@ public class SlideshowFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 
 }
