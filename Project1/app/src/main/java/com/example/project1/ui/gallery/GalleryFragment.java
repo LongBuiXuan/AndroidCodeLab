@@ -24,11 +24,11 @@ public class GalleryFragment extends Fragment {
     TextView manchinh, manphu, manhexa, manocta, mandec, manbin;
     String tinhtoan;
     String pheptoan;
-    Integer mode,k;
+    Integer mode,k,m1,m2, res;
     String hex1, dec1, octa1, bin1;
     Boolean checkdot=false, checkBang=false;
-    String n1,n2, res, change;
-    BigInteger value;
+    String n1,n2;
+
 
 
 
@@ -402,6 +402,31 @@ public class GalleryFragment extends Fragment {
                 bt4.setEnabled(true);
                 bt3.setEnabled(true);
                 bt2.setEnabled(true);
+                bang.setOnClickListener(null);
+                bang.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!checkBang){
+                            m1 = Integer.parseInt(n1,16);
+                            tinhtoan = manchinh.getText().toString();
+                            m2 = Integer.parseInt(manchinh.getText() + "",16);
+                            manphu.setText(manphu.getText().toString() + manchinh.getText().toString() + "");
+                            manchinh.setText("");
+                            if (pheptoan == "+")
+                                res = m1 + m2;
+                            else if (pheptoan == "-")
+                                res = m1 - m2;
+                            else if (pheptoan == "x")
+                                res = m1 * m2;
+                            else if (pheptoan == "/")
+                                res = m1 / m2;
+                            checkBang = true;
+                            manchinh.setText(Integer.toHexString(res));
+
+
+                        }
+                    }
+                });
 
             }
         });
@@ -428,6 +453,31 @@ public class GalleryFragment extends Fragment {
                 bt4.setEnabled(true);
                 bt3.setEnabled(true);
                 bt2.setEnabled(true);
+                bang.setOnClickListener(null);
+                bang.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!checkBang){
+                            m1 = Integer.parseInt(n1);
+                            tinhtoan = manchinh.getText().toString();
+                            m2 = Integer.parseInt(manchinh.getText() + "");
+                            manphu.setText(manphu.getText().toString() + manchinh.getText().toString() + "");
+                            manchinh.setText("");
+                            if (pheptoan == "+")
+                                res = m1 + m2;
+                            else if (pheptoan == "-")
+                                res = m1 - m2;
+                            else if (pheptoan == "x")
+                                res = m1 * m2;
+                            else if (pheptoan == "/")
+                                res = m1 / m2;
+                            checkBang = true;
+                            manchinh.setText(res + "");
+
+
+                        }
+                    }
+                });
 
             }
         });
@@ -455,6 +505,31 @@ public class GalleryFragment extends Fragment {
                 bt4.setEnabled(true);
                 bt3.setEnabled(true);
                 bt2.setEnabled(true);
+                bang.setOnClickListener(null);
+                bang.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!checkBang){
+                            m1 = Integer.parseInt(n1,8);
+                            tinhtoan = manchinh.getText().toString();
+                            m2 = Integer.parseInt(manchinh.getText() + "",8);
+                            manphu.setText(manphu.getText().toString() + manchinh.getText().toString() + "");
+                            manchinh.setText("");
+                            if (pheptoan == "+")
+                                res = m1 + m2;
+                            else if (pheptoan == "-")
+                                res = m1 - m2;
+                            else if (pheptoan == "x")
+                                res = m1 * m2;
+                            else if (pheptoan == "/")
+                                res = m1 / m2;
+                            checkBang = true;
+                            manchinh.setText(Integer.toOctalString(res));
+
+
+                        }
+                    }
+                });
 
             }
         });
@@ -482,6 +557,31 @@ public class GalleryFragment extends Fragment {
                 bt4.setEnabled(false);
                 bt3.setEnabled(false);
                 bt2.setEnabled(false);
+                bang.setOnClickListener(null);
+                bang.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!checkBang){
+                            m1 = Integer.parseInt(n1,2);
+                            tinhtoan = manchinh.getText().toString();
+                            m2 = Integer.parseInt(manchinh.getText() + "",2);
+                            manphu.setText(manphu.getText().toString() + manchinh.getText().toString() + "");
+                            manchinh.setText("");
+                            if (pheptoan == "+")
+                                res = m1 + m2;
+                            else if (pheptoan == "-")
+                                res = m1 - m2;
+                            else if (pheptoan == "x")
+                                res = m1 * m2;
+                            else if (pheptoan == "/")
+                                res = m1 / m2;
+                            checkBang = true;
+                            manchinh.setText(Integer.toBinaryString(res));
+
+
+                        }
+                    }
+                });
 
             }
         });

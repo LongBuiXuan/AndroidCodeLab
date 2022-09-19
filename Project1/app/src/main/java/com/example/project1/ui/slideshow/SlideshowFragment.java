@@ -77,7 +77,7 @@ public class SlideshowFragment extends Fragment {
                         //double multiplier = Double.valueOf(rates.get(convertToDropdown.getSelectedItem().toString()).toString());
                         //double result = currency * multiplier;
 
-                        updatestatus.setText("OK");
+                        updatestatus.setText("Last updated: Today");
 
                     }
 
